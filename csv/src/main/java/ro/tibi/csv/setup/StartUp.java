@@ -24,16 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableJpaRepositories("ro.tibi.csv.dao")
 @EntityScan("ro.tibi.csv.repository")
 public class StartUp extends SpringBootServletInitializer {
-//
-//	@Override
-//    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-//        return application.sources(StartUp.class);
-//    }
-//
-//    public static void main(String... args) {
-//        System.setProperty("spring.profiles.default", System.getProperty("spring.profiles.default", "dev"));
-//        final ApplicationContext applicationContext = SpringApplication.run(StartUp.class, args);
-//    }
+
 
 	@Bean
     public Docket api() { 
