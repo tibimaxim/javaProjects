@@ -2,9 +2,14 @@ package ro.tibi.csv.service;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.util.BeanUtil;
+
+import javassist.NotFoundException;
 import ro.tibi.csv.dao.ClientDAO;
 import ro.tibi.csv.repository.Client;
 
@@ -26,8 +31,13 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public Client updateClinet(Client client) {
-		return clientDAO.save(client);
+	public Client updateClient(Client client) throws NotFoundException {
+		Client databaseClient = clientDAO.findOne(client.getId());
+		if (databaseClient == null) {
+			throw new NotFoundException("Client with id: "+ client.getId() + "does not exist.");
+		}
+		BeanUtils.copyProperties(client, databaseClient);
+		return clientDAO.save(databaseClient);
 	}
 
 	@Override

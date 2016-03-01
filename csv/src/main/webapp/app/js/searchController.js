@@ -4,12 +4,12 @@ app.controller('SearchCtrl', function($scope, $http) {
 		name : "dadsadsa",
 		firstName : ""
 	}
-
+	
 	$scope.results;
 
 	$scope.search = function() {
 		$http({
-			url : "http://localhost:8080/csv/client/searchClients",
+			url : clientServicesPath + "searchClients",
 			method : 'POST',
 			data : $scope.clientSearch,
 			headers : {
@@ -19,10 +19,6 @@ app.controller('SearchCtrl', function($scope, $http) {
 			$scope.results = serverData;
 			console.log($scope.results);
 		});
-	};
-
-	$scope.getCssClassForId = function() {
-		
 	};
 
 });

@@ -1,0 +1,39 @@
+<div class="container">
+	<h2>Client {{client.lastName}}</h2>
+
+	<p>
+		CNP: <input type="text" ng-value="client.securityCode"
+			ng-model="client.securityCode" />
+	</p>
+	<p>
+		Nume: <input type="text" ng-value="client.lastName"
+			ng-model="client.lastName" />
+	</p>
+	<p>
+		Prenume 1: <input type="text" ng-value="client.firstName1"
+			ng-model="client.firstName1" />
+	</p>
+	<p>
+		Prenume 2: <input type="text" ng-value="client.firstName2"
+			ng-model="client.firstName2" />
+	</p>
+	<p>
+		Seria: <input type="text" ng-value="client.serialCode"
+			ng-model="client.serialCode" />
+	</p>
+	<p>
+		Numarul: <input type="text" ng-value="client.serialNumber"
+			ng-model="client.serialNumber" />
+	</p>
+	<p>
+		Sex: <input type="text" ng-value="client.sex"
+			ng-model="client.sex" />
+	</p>
+	<p>
+		Data nasterii: {{client.dateOfBirth | date : 'dd-MM-yyyy'}}
+	</p>
+	<span class="button" ng-click="update()">Salveaza modificarile</span>
+	<br/>
+	<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+	
+</div>

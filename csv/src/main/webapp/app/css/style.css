@@ -19,6 +19,13 @@ body {
 	margin-top: 15px;
 }
 
+.errorMessage {
+	padding-bottom: 20px;
+	padding-top: 35px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #fe6767;
+}
 .button {
 	background-color: #e1e1e1;
 	border-radius: 5px;

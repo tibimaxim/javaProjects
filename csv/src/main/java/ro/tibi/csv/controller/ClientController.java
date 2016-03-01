@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javassist.NotFoundException;
 import ro.tibi.csv.dto.ClientSearchDTO;
 import ro.tibi.csv.repository.Client;
 import ro.tibi.csv.service.ClientService;
@@ -46,8 +47,8 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/updateClient", method = RequestMethod.POST, consumes = "application/json")
-	public Client updateClient(@RequestBody Client client) {
-		return clientService.updateClinet(client);
+	public Client updateClient(@RequestBody Client client) throws NotFoundException{
+		return clientService.updateClient(client);
 	}
 
 	@RequestMapping(value = "/deleteClient", method = RequestMethod.POST)

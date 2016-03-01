@@ -1,0 +1,1 @@
+var clientServicesPath = "http://localhost:8080/csv/client/";
