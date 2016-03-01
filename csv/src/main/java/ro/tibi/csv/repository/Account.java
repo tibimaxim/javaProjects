@@ -2,6 +2,7 @@ package ro.tibi.csv.repository;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
@@ -38,7 +39,7 @@ public class Account {
 	@Enumerated
 	private AccountStatus status;
 	
-	@OneToMany(fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER,cascade = {CascadeType.ALL})
     @JoinColumn(name="account_id")
     public List<Role> roles;
 

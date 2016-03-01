@@ -4,6 +4,14 @@
 
 <web-app>
   <display-name>Client Single View</display-name>
+  <filter>
+   <filter-name>ExternalSecurityFilter</filter-name>
+   <filter-class>ro.tibi.csv.filters.ExternalSecurityFilter</filter-class>
+</filter>
+<filter-mapping>
+   <filter-name>ExternalSecurityFilter</filter-name>
+   <url-pattern>/external/*</url-pattern>
+</filter-mapping>
 
 </web-app>
 

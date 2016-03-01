@@ -1,19 +1,17 @@
 package ro.tibi.csv.service;
 
+import java.security.Principal;
 import java.util.List;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.tibi.csv.dao.AccountDAO;
 import ro.tibi.csv.repository.Account;
 
 @Service
-@Transactional(propagation=Propagation.MANDATORY)
+@Transactional(rollbackFor=Exception.class)
 public class AccountServicerImpl implements AccountService {
 	
 	@Autowired
@@ -26,6 +24,7 @@ public class AccountServicerImpl implements AccountService {
 	}
 
 	@Override
+	@Transactional
 	public Account saveAccount(Account account) {
 		//this is save so nullify id just to be sure
 		account.setId(null);
@@ -35,8 +34,7 @@ public class AccountServicerImpl implements AccountService {
 	@Override
 	@Transactional(readOnly=true)
 	public Account getAccount(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountDAO.findByUsername(username);
 	}
 
 	@Override
