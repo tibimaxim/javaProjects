@@ -1,0 +1,43 @@
+<div class="container">
+	<h2 class="page-header">Cauta Clienti</h2>
+	<div class="searchBox">
+		<p>
+			CNP: <input type="text" ng-value="clientSearch.securityCode"
+				ng-model="clientSearch.securityCode" />
+		</p>
+		<p>
+			Nume: <input type="text" ng-value="clientSearch.name"
+				ng-model="clientSearch.name" />
+		</p>
+		<p>
+			Prenume: <input type="text" ng-value="clientSearch.firstName"
+				ng-model="clientSearch.firstName" />
+		</p>
+		<span class="button" ng-click="search()">Cauta</span>
+
+	</div>
+	<br>
+	<hr />
+	<div class="responseBox">
+		<div class="responseBoxHeader"
+			ng-show="results !== null && results.length > 0">
+			<h1>Rezultate</h1>
+			<table class="resultTable">
+				<tr class ="resultTableHeader">
+					<td> </td>
+					<td>Nume</td>
+					<td>Prenume</td>
+					<td>cnp</td>
+					<td>Data nasterii</td>
+				</tr>
+				<tr ng-repeat="result in results" >
+					<td><a href="#/client/{{result.id}}">Detalii</a></td>
+					<td>{{result.lastName}}</td>
+					<td>{{result.firstName1}}</td>
+					<td>{{result.securityCode }}</td>
+					<td>{{result.dateOfBirth | date : "dd-MM-yyyy"}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
