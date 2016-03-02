@@ -1,6 +1,6 @@
-app.controller('ClientCtrl', function($scope, $routeParams, $http) {
+app.controller('AddClientCtrl', function($scope, $http) {
 
-	$scope.id = $routeParams.id;
+	
 	$scope.errorMessage = null;
 	$scope.successMessage = null;
 
@@ -20,25 +20,6 @@ app.controller('ClientCtrl', function($scope, $routeParams, $http) {
 		address : null
 	};
 	
-	  
-
-	// on load call getData to pre-fill client
-	$scope.$on('$viewContentLoaded', function($evt, data) {
-		$scope.getClient();
-	});
-
-	$scope.getClient = function() {
-		$http({
-			url : clientServicesPath + 'getClient?id=' + $scope.id,
-			method : 'GET',
-			headers : {
-				'Content-Type' : 'application/json'
-			},
-		}).success(function(serverData) {
-			$scope.client = serverData;
-			console.log($scope.client);
-		});
-	};
 
 	$scope.save = function() {
 		//get date from datepicker, cast it as date and replace the on in $scope
@@ -51,16 +32,14 @@ app.controller('ClientCtrl', function($scope, $routeParams, $http) {
 		$scope.client.expireDate = expireDate;
 
 		$http({
-			url : clientServicesPath + 'updateClient',
+			url : clientServicesPath + 'saveClient',
 			method : 'POST',
 			data : $scope.client,
 			headers : {
 				'Content-Type' : 'application/json'
 			},
 		}).success(function(serverData) {
-			$scope.client = serverData;
-			$scope.errorMessage = null;
-			$scope.successMessage = "Datele au fost modificate cu success!";
+			window.location = appPath + "client/"+serverData.id;
 		}).error(function(serverData) {
 			$scope.errorMessage = serverData;
 			$scope.successMessage = null;

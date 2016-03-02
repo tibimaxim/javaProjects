@@ -1,3 +1,9 @@
+  <script>
+  $(function() {
+    $("#dateOfBirthDatePicker").datepicker({ dateFormat: 'dd-mm-yy' });
+    $("#expireDateDatePicker").datepicker({ dateFormat: 'dd-mm-yy' });
+  });
+  </script>
 <div class="container">
 	<h2>Client {{client.lastName}}</h2>
 
@@ -30,10 +36,33 @@
 			ng-model="client.sex" />
 	</p>
 	<p>
-		Data nasterii: {{client.dateOfBirth | date : 'dd-MM-yyyy'}}
+		Data nasterii: <input type="text" value="{{client.dateOfBirth | date : 'dd-MM-yyyy'}}" id="dateOfBirthDatePicker">
 	</p>
-	<span class="button" ng-click="update()">Salveaza modificarile</span>
+	<p>
+		Data expirare buletin: <input type="text" value="{{client.expireDate | date : 'dd-MM-yyyy'}}" id="expireDateDatePicker">
+	</p>
+	
+	<p>
+		Email: <input type="text" ng-value="client.emailAddress"
+			ng-model="client.emailAddress" />
+	</p>
+	
+	<p>
+		Telefon: <input type="text" ng-value="client.phoneNumber"
+			ng-model="client.phoneNumber" />
+	</p>
+	
+	<p>
+		Adresa: <input type="text" ng-value="client.address"
+			ng-model="client.address" />
+	</p>
+
+	<span class="button" ng-click="save()">Salveaza modificarile</span>
 	<br/>
 	<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+	
+	<div class="successMessage" ng-if="successMessage !== null">
+	{{successMessage}}
+	</div>
 	
 </div>

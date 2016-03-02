@@ -14,7 +14,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     // Pages
     .when("/search", {templateUrl: "partials/search.html", controller: "SearchCtrl"})
     .when("/client/:id", {templateUrl: "partials/client.html", controller: "ClientCtrl"})
-    .when("/pricing", {templateUrl: "partials/pricing.html", controller: "PageCtrl"})
+    .when("/create", {templateUrl: "partials/client.html", controller: "AddClientCtrl"})
     .when("/services", {templateUrl: "partials/services.html", controller: "PageCtrl"})
     .when("/contact", {templateUrl: "partials/contact.html", controller: "PageCtrl"})
     // Blog
