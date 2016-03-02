@@ -32,7 +32,8 @@ public class AccountServicerImpl implements AccountService {
 	public Account saveAccount(Account account) {
 		// this is save so nullify id just to be sure
 		account.setId(null);
-		account.setHash(passwordEncoder.encode(account.getHash()));
+		//encode password
+		account.setPassword(passwordEncoder.encode(account.getPassword()));
 		return accountDAO.saveAndFlush(account);
 	}
 

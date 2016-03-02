@@ -35,10 +35,8 @@ public class Account {
 	private String username;
 	
 	@Column(nullable=false) 
-	private String hash;
-	
-	@Column(nullable=false) 
-	private String salt;
+	private String password;
+
 	
 	@Enumerated
 	private AccountStatus status;
@@ -49,10 +47,19 @@ public class Account {
 
 
 	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Version
 	@JsonIgnore
 	private int version;
-
+	
+	
 	public String getUsername() {
 		return username;
 	}
@@ -61,21 +68,9 @@ public class Account {
 		this.username = username;
 	}
 
-	public String getHash() {
-		return hash;
-	}
+	
 
-	public void setHash(String hash) {
-		this.hash = hash;
-	}
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
+	
 
 	public Integer getId() {
 		return id;
@@ -112,7 +107,7 @@ public class Account {
 	public String[] getAuthorities(){
 		String[] authorities=new String[this.roles.size()];
 		for (int i =0;i<this.roles.size();i++) {
-			authorities[i] = this.roles.get(i).getRole();
+			authorities[i] = "ROLE_"+this.roles.get(i).getRole();
 		}
 		return authorities;
 	}
