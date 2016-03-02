@@ -175,18 +175,16 @@ body {
 }
 
 .errorMessage {
-	padding-bottom: 20px;
-	padding-top: 35px;
-	padding-left: 10px;
-	padding-right: 10px;
-	background-color: #fe6767;
+	padding: 10px;
+	background-color: #fe6767;.
+	border: 2px solid #cccccc;
+	border-radius: 10px;
 }
 
 .successMessage {
-	padding-bottom: 20px;
-	padding-top: 35px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding: 10px;
+	border-radius: 10px;
+	border: 2px solid #cccccc;
 	background-color: #b3ffb3;
 }
 

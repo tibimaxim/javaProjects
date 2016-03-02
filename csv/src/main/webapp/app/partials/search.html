@@ -5,18 +5,18 @@
 			<tr>
 				<td>CNP:</td>
 				<td><input type="text" ng-value="clientSearch.securityCode"
-					ng-model="clientSearch.securityCode" /></td>
+					ng-model="clientSearch.securityCode" on-Enter="search()" /></td>
 			</tr>
 			<tr>
 				<td>Nume:</td>
 
 				<td><input type="text" ng-value="clientSearch.name"
-					ng-model="clientSearch.name" /></td>
+					ng-model="clientSearch.name" on-Enter="search()" /></td>
 			</tr>
 			<tr>
 				<td>Prenume:</td>
 				<td><input type="text" ng-value="clientSearch.firstName"
-					ng-model="clientSearch.firstName" /></td>
+					ng-model="clientSearch.firstName" on-Enter="search()" /></td>
 			</tr>
 		</table>
 		<br> <span class="button" ng-click="search()">Cauta</span>
