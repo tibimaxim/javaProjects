@@ -162,6 +162,15 @@ body {
 	border: 2px solid #cccccc;
 }
 
+.loginBox {
+	width: 30%;
+	border-radius: 10px;
+	padding: 10px;
+	border: 2px solid #cccccc;
+	padding-bottom: 30px;
+	margin-top: 30px;
+}
+
 .searchBox table {
 	width: 100%;
 }
@@ -193,6 +202,7 @@ body {
 	border-radius: 5px;
 	padding: 5px;
 	border: 1px solid #cccccc;
+	cursor: pointer;
 }
 
 .resultTable {

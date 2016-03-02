@@ -15,12 +15,12 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/search", {templateUrl: "partials/search.html", controller: "SearchCtrl"})
     .when("/client/:id", {templateUrl: "partials/client.html", controller: "ClientCtrl"})
     .when("/create", {templateUrl: "partials/client.html", controller: "AddClientCtrl"})
-    .when("/services", {templateUrl: "partials/services.html", controller: "PageCtrl"})
+    .when("/logout", {templateUrl: "partials/logout.html", controller: "LogoutCtrl"})
     .when("/contact", {templateUrl: "partials/contact.html", controller: "PageCtrl"})
     // Blog
     .when("/blog", {templateUrl: "partials/blog.html", controller: "BlogCtrl"})
     .when("/blog/post", {templateUrl: "partials/blog_item.html", controller: "BlogCtrl"})
-    .otherwise({redirectTo: '/'});
+    .otherwise({redirectTo: '/search'});
 }]);
 
 
@@ -33,6 +33,7 @@ app.controller('PageCtrl', function (/* $scope, $location, $http */) {
     interval: 5000
   });
   
+
 
   
   

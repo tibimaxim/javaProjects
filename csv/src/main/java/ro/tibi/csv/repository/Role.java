@@ -7,15 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
-@Table(name="Roles")
+@Table(name = "Roles")
 public class Role {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
-	@Column(nullable=false) 
+
+	@Column(nullable = false)
 	private String role;
 
 	public Integer getId() {
@@ -33,7 +35,5 @@ public class Role {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	
 
 }

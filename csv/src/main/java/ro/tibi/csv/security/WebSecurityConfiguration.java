@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import ro.tibi.csv.dao.AccountDAO;
 import ro.tibi.csv.repository.Account;
@@ -17,30 +19,35 @@ import ro.tibi.csv.repository.Account;
 @Configuration
 class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
 
-  @Autowired
-  private AccountDAO accountDAO;
+	@Autowired
+	private AccountDAO accountDAO;
 
-  @Override
-  public void init(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(userDetailsService());
-  }
+	@Autowired
+	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-  @Bean
-  UserDetailsService userDetailsService() {
-    return new UserDetailsService() {
+		auth.userDetailsService(userDetailsService()).passwordEncoder(passwordEncoder());
+	}
 
-      @Override
-      public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountDAO.findByUsername(username);
-        if(account != null) {
-        return new User(account.getUsername(), account.getHash(), true, true, true, true,
-                AuthorityUtils.createAuthorityList("USER"));
-        } else {
-          throw new UsernameNotFoundException("could not find the user '"
-                  + username + "'");
-        }
-      }
-      
-    };
-  }
+	@Bean
+	UserDetailsService userDetailsService() {
+		return new UserDetailsService() {
+
+			@Override
+			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+				Account account = accountDAO.findByUsername(username);
+				if (account != null) {
+					return new User(account.getUsername(), account.getHash(), true, true, true, true,
+							AuthorityUtils.createAuthorityList(account.getAuthorities()));
+				} else {
+					throw new UsernameNotFoundException("Could not find the user '" + username + "'");
+				}
+			}
+
+		};
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
