@@ -33,7 +33,7 @@ public class ClientController {
 
 	@RequestMapping(value = "/searchClients", method = RequestMethod.POST, consumes = "application/json")
 	public List<Client> searchClients(@RequestBody ClientSearchDTO clientSearchDTO) {
-		return clientService.getClients();
+		return clientService.searchClients(clientSearchDTO);
 	}
 
 	@RequestMapping(value = "/getClients", method = RequestMethod.GET)

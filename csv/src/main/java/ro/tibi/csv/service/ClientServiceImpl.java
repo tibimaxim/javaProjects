@@ -4,14 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.util.matcher.NegatedRequestMatcher;
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.util.BeanUtil;
 
 import javassist.NotFoundException;
 import ro.tibi.csv.dao.ClientDAO;
+import ro.tibi.csv.dto.ClientSearchDTO;
 import ro.tibi.csv.repository.Client;
+import ro.tibi.csv.util.DaoSpecifications;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -55,5 +54,10 @@ public class ClientServiceImpl implements ClientService {
 	public Client getClientBySecurityCode(Integer securityCode) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Client> searchClients(ClientSearchDTO search) {
+		return clientDAO.findAll(DaoSpecifications.findByCriteria(search));
 	}
 }

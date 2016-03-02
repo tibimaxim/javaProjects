@@ -11,12 +11,167 @@ body {
 	cursor: pointer;
 }
 
-.img-home-portfolio, .img-customer, .portfolio-item {
-	margin-bottom: 30px;
-}
-
 .tab-pane {
 	margin-top: 15px;
+}
+
+.clientContainer {
+	width: 60%;
+	border-radius: 10px;
+	padding: 10px;
+	border: 2px solid #cccccc;
+}
+
+.clientContainer .tRow {
+	display: table-row;	
+}
+
+.clientContainer .rTable {
+	display: table;
+	width: 100%;
+}
+
+.clientContainer .securityCode {
+	float: left;
+	padding-left: 30px;
+	padding-right: 10px;
+}
+
+.clientContainer .securityCode input {
+	float: right;
+	margin-left: 5px;
+}
+
+.clientContainer .serialCode {
+	float: left;
+	margin-left: 50px;
+	padding-right: 10px;
+	padding-left: 30px;
+}
+
+.clientContainer .serialCode input {
+	float: right;
+	margin-left: 5px;
+	width: 30px;
+}
+
+.clientContainer .serialNumber {
+	float: left;
+	padding-right: 10px;
+}
+
+.clientContainer .serialNumber input {
+	float: right;
+	margin-left: 5px;
+	width: 80px;
+}
+
+.clientContainer .lastName {
+	float: left;
+	padding-left: 30px;
+	padding-right: 10px;
+}
+
+.clientContainer .lastName input {
+	float: right;
+	margin-left: 5px;
+}
+
+.clientContainer .sex {
+	float: left;
+	padding-left: 30px;
+	padding-right: 10px;
+	margin-left: 50px;
+}
+
+.clientContainer .sex input {
+	float: right;
+	margin-left: 5px;
+	width: 30px;
+}
+
+.clientContainer .firstName1 {
+	float: left;
+	padding-left: 30px;
+	padding-right: 10px;
+}
+
+.clientContainer .firstName1 input {
+	float: right;
+	margin-left: 5px;
+}
+
+.clientContainer .firstName1 input {
+	float: right;
+	margin-left: 5px;
+}
+
+.clientContainer .firstName2 {
+	float: left;
+	padding-left: 5px;
+	padding-right: 10px;
+}
+
+.clientContainer .firstName2 input {
+	float: right;
+	margin-left: 5px;
+}
+
+
+
+.clientContainer .dateOfBirth {
+	float: left;
+	padding-left: 30px;
+	padding-right: 10px;
+}
+
+.clientContainer .dateOfBirth input {
+	float: right;
+	margin-left: 5px;
+	width: 90px;
+}
+
+.clientContainer .expireDate {
+	float: left;
+	padding-left: 30px;
+	padding-right: 10px;
+	margin-left: 50px;
+}
+
+.clientContainer .expireDate input {
+	float: right;
+	margin-left: 5px;
+	width: 90px;
+}
+
+.clientContainer .singleLineInfo {
+	float: left;
+	padding-left: 30px;
+	padding-right: 10px;
+}
+
+.clientContainer .singleLineInfo input {
+	float: right;
+	margin-left: 5px;
+}
+
+.searchBox {
+	width: 30%;
+	border-radius: 10px;
+	padding: 10px;
+	border: 2px solid #cccccc;
+}
+
+.searchBox table {
+	width: 100%;
+}
+
+.searchBox td {
+	padding-bottom: 3px;
+}
+
+.searchBox input {
+	width: 100%;
 }
 
 .errorMessage {
@@ -26,6 +181,7 @@ body {
 	padding-right: 10px;
 	background-color: #fe6767;
 }
+
 .successMessage {
 	padding-bottom: 20px;
 	padding-top: 35px;
@@ -33,6 +189,7 @@ body {
 	padding-right: 10px;
 	background-color: #b3ffb3;
 }
+
 .button {
 	background-color: #e1e1e1;
 	border-radius: 5px;
@@ -46,18 +203,51 @@ body {
 	padding-bottom: 20px;
 }
 
-.resultTableHeader {
-	vertical-align: center; 
+.resultTable .rTable {
+	display: table;
+	width: 100%;
+}
+
+.resultTable .rTableRow {
+	display: table-row;
+}
+
+.resultTable .rTableHeading {
+	display: table-header-group;
+}
+
+.resultTable .rTableCell {
+	display: table-cell;
+	padding: 3px 10px;
+}
+
+.resultTable .rTableHead {
+	display: table-cell;
+	padding: 3px 10px;
+	vertical-align: center;
 	text-align: left;
 	background-color: #333333 !important;
 	color: #cccccc !important;
 }
-table tr:nth-child(odd) {
-  background-color: #f1f1f1;
+
+.resultTable .rTableHeading {
+	display: table-header-group;
+
 }
-table tr:nth-child(even) {
-  background-color: #ffffff;
+
+.resultTable .rTableFoot {
+	display: table-footer-group;
 }
+
+.resultTable .rTableBody {
+	display: table-row-group;
+}
+.resultTable .rTableRow:nth-child(odd) {
+	background-color: #f1f1f1;
+} 
+.resultTable .rTableRow:nth-child(even) {
+	background-color: #ffffff;
+} 
 
 /* Page Sections */
 .section, .section-colored {
@@ -117,3 +307,4 @@ footer {
 		/* increases the carousel height so it looks good on phones */
 	}
 }
+

@@ -3,7 +3,9 @@ app.controller('AddClientCtrl', function($scope, $http) {
 	
 	$scope.errorMessage = null;
 	$scope.successMessage = null;
-
+	//for new client
+	$scope.fullName = "Nou";
+	
 	$scope.client = {
 		id : null,
 		securityCode : null,

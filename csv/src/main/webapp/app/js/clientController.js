@@ -3,6 +3,7 @@ app.controller('ClientCtrl', function($scope, $routeParams, $http) {
 	$scope.id = $routeParams.id;
 	$scope.errorMessage = null;
 	$scope.successMessage = null;
+	$scope.fullName = null;
 
 	$scope.client = {
 		id : null,
@@ -26,6 +27,19 @@ app.controller('ClientCtrl', function($scope, $routeParams, $http) {
 	$scope.$on('$viewContentLoaded', function($evt, data) {
 		$scope.getClient();
 	});
+	
+	$scope.buildFullName = function (){
+		//compose client full name
+		if ($scope.client.lastName !== null) {
+			$scope.fullName = $scope.client.lastName;
+		};
+		if ($scope.client.firstName1 !== null) {
+			$scope.fullName += " "+ $scope.client.firstName1;
+		};
+		if ($scope.client.firstName2 !== null) {
+			$scope.fullName += " "+ $scope.client.firstName2;
+		};
+	};
 
 	$scope.getClient = function() {
 		$http({
@@ -36,6 +50,7 @@ app.controller('ClientCtrl', function($scope, $routeParams, $http) {
 			},
 		}).success(function(serverData) {
 			$scope.client = serverData;
+			$scope.buildFullName();
 			console.log($scope.client);
 		});
 	};

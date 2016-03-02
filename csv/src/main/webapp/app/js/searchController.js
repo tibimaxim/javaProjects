@@ -1,11 +1,11 @@
 app.controller('SearchCtrl', function($scope, $http) {
 	$scope.clientSearch = {
-		securityCode : "",
-		name : "dadsadsa",
-		firstName : ""
+		securityCode : null,
+		name : null,
+		firstName : null
 	}
 	
-	$scope.results;
+	$scope.results= null;
 
 	$scope.search = function() {
 		$http({
@@ -17,7 +17,6 @@ app.controller('SearchCtrl', function($scope, $http) {
 			},
 		}).success(function(serverData) {
 			$scope.results = serverData;
-			console.log($scope.results);
 		});
 	};
 
