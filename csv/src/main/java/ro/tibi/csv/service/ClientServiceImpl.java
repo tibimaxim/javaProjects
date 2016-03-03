@@ -1,5 +1,6 @@
 package ro.tibi.csv.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javassist.NotFoundException;
 import ro.tibi.csv.dao.ClientDAO;
 import ro.tibi.csv.dto.ClientSearchDTO;
+import ro.tibi.csv.dto.IdentityCardScanDTO;
 import ro.tibi.csv.repository.Client;
 import ro.tibi.csv.util.DaoSpecifications;
 
@@ -17,6 +19,9 @@ public class ClientServiceImpl implements ClientService {
 	
 	@Autowired
 	private ClientDAO clientDAO;
+	
+	@Autowired 
+	private OcrService ocrService;
 
 	@Override
 	public Client getClient(Integer id) {
@@ -59,5 +64,12 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public List<Client> searchClients(ClientSearchDTO search) {
 		return clientDAO.findAll(DaoSpecifications.findByCriteria(search));
+	}
+
+	@Override
+	public Client createFromOcr(IdentityCardScanDTO identityCardScanDTO) throws IOException {
+		Client client = new Client();
+		ocrService.fillClientDataFromCIScan(client, identityCardScanDTO.getIdentityCardOcrAreaScan());
+		return clientDAO.save(client);
 	}
 }
