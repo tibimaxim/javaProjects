@@ -16,25 +16,10 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/client/:id", {templateUrl: "partials/client.html", controller: "ClientCtrl"})
     .when("/create", {templateUrl: "partials/client.html", controller: "AddClientCtrl"})
     .when("/logout", {templateUrl: "partials/logout.html", controller: "LogoutCtrl"})
-    .when("/contact", {templateUrl: "partials/contact.html", controller: "PageCtrl"})
-    // Blog
-    .when("/blog", {templateUrl: "partials/blog.html", controller: "BlogCtrl"})
-    .when("/blog/post", {templateUrl: "partials/blog_item.html", controller: "BlogCtrl"})
+    .when("/accounts", {templateUrl: "partials/accounts.html", controller: "AccountsCtrl"})
+    .when("/account/:id", {templateUrl: "partials/account.html", controller: "AccountCtrl"})
+    .when("/adaugare", {templateUrl: "partials/addAccount.html", controller: "AddAccountCtrl"})
+    .when("/myAccount", {templateUrl: "partials/myAccount.html", controller: "MyAccountCtrl"})
     .otherwise({redirectTo: '/search'});
 }]);
 
-
-/**
- * Controls all other Pages
- */
-app.controller('PageCtrl', function (/* $scope, $location, $http */) {
-  // Activates the Carousel
-  $('.carousel').carousel({
-    interval: 5000
-  });
-  
-
-
-  
-  
-});

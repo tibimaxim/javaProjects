@@ -1,0 +1,32 @@
+<div class="container">
+	<h2 class="page-header">Contul nou</h2>
+	<div class="accountBox">
+		<p>Detalii Utilizator:</p>
+		<hr />
+		<p>Utilizator: <input type="text" ng-model="user.username" /></p>
+		<p>Parola: <input type="password" ng-model="user.password" /></p>
+		<p>Status: <input type="text" ng-model="user.status" /></p>
+		<hr />
+		<span class="button" ng-click="save()"> Adauga </span>
+	</div>
+	<div class="actionBox">
+		<p>Roluri:</p>
+		<hr />
+		<p>
+			Rol: <input type="text" ng-model="currentRole" />
+		</p>
+		<hr />
+		<span class="button" ng-click="addRole()">Adauga</span>
+		<hr />
+		<p>Roluri atasate:</p>
+		<ul ng-repeat="roleItem in roles">{{roleItem.role}} <a href="" ng-click="removeRole(roleItem.role)">X</a></ul>
+	</div>
+	
+		<hr/>
+		<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+
+		<div class="successMessage" ng-if="successMessage !== null">
+			{{successMessage}}</div>
+
+
+</div>
