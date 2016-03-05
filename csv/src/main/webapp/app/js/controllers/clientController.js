@@ -4,6 +4,12 @@ app.controller('ClientCtrl', function($scope, $routeParams, $http) {
 	$scope.errorMessage = null;
 	$scope.successMessage = null;
 	$scope.fullName = null;
+	
+	$scope.overlay = false;
+	
+	$scope.toggleDeletePopUp = function() {
+		$scope.overlay = !$scope.overlay;
+	}
 
 	$scope.client = {
 		id : null,
@@ -82,5 +88,23 @@ app.controller('ClientCtrl', function($scope, $routeParams, $http) {
 		});
 	};
 
+	$scope.deleteClient = function() {
+		$scope.overlay = false;
+		$http({
+			url : clientServicesPath + 'deleteClient',
+			method : 'POST',
+			params : {id : $scope.id},
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+		}).success(function(serverData) {
+			$scope.errorMessage = null;
+			$scope.successMessage = "Clientul a fost sters";
+		}).error(function(serverData) {
+			$scope.errorMessage = serverData;
+			$scope.successMessage = null;
+		});
+		
+	};
 	
 });

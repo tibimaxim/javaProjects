@@ -1,6 +1,7 @@
 var host = window.location.host;
 var clientServicesPath = 'http://'+host+'/csv/client/';
 var accountServicesPath = 'http://'+host+'/csv/account/';
+var externalServicesPath = 'http://'+host+'/csv/external/';
 var basePath ='http://'+host+'/csv/';
 var appPath = 'http://'+host+'/csv/app/#/';
 

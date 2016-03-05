@@ -6,6 +6,16 @@ app.controller('AddClientCtrl', function($scope, $http) {
 	//for new client
 	$scope.fullName = "Nou";
 	
+	$scope.showUploadForm = false;
+	$scope.showUploadButton=true;
+	$scope.uploadFile = null;
+	
+	
+	$scope.toggleShowUploadForm = function(){
+		$scope.showUploadForm = !$scope.showUploadForm;
+		$scope.uploadFile = null;
+	}
+	
 	$scope.client = {
 		id : null,
 		securityCode : null,
@@ -41,6 +51,26 @@ app.controller('AddClientCtrl', function($scope, $http) {
 				'Content-Type' : 'application/json'
 			},
 		}).success(function(serverData) {
+			window.location = appPath + "client/"+serverData.id;
+		}).error(function(serverData) {
+			$scope.errorMessage = serverData;
+			$scope.successMessage = null;
+		});
+	};
+	
+	$scope.saveFromFile = function() {
+		 var byteArray = $scope.uploadFile.data.replace(/data:image\/jpeg;base64,/g, '');
+
+        $http({
+            url: clientServicesPath + 'saveIdentityCardData',
+			method : 'POST',
+			data : {identityCardOcrAreaScan: byteArray},
+			headers : {
+				'Content-Type' : 'application/json'
+			},
+
+        })
+		.success(function(serverData) {
 			window.location = appPath + "client/"+serverData.id;
 		}).error(function(serverData) {
 			$scope.errorMessage = serverData;

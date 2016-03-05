@@ -24,11 +24,11 @@ import ro.tibi.csv.service.ClientService;
 public class ExternalController {
 
 	@Autowired
-	private ClientService clientservice;
+	private ClientService clientService;
 
 	@RequestMapping(value = "/saveIdentityCardData", method = RequestMethod.POST, consumes = "application/json")
 	public Client saveIdentityCardData(@RequestBody IdentityCardScanDTO identityCardScanDTO) throws IOException {
-		return clientservice.createFromOcr(identityCardScanDTO);
+		return clientService.createFromOcr(identityCardScanDTO);
 	}
 
 	// TODO: remove this. Added for saveIdentityCardData testing purposes

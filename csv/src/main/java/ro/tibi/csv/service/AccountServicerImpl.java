@@ -2,6 +2,8 @@ package ro.tibi.csv.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,9 +16,11 @@ import ro.tibi.csv.dto.AccountCreationDTO;
 import ro.tibi.csv.repository.Account;
 
 @Service
-@Transactional(rollbackFor = Exception.class)
+@Transactional
 public class AccountServicerImpl implements AccountService {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(AccountServicerImpl.class);
+	
 	@Autowired
 	private AccountDAO accountDAO;
 	
@@ -32,6 +36,7 @@ public class AccountServicerImpl implements AccountService {
 	@Transactional(readOnly = true)
 	public Account getAccount() {
 		User user = securityService.getLoggedUser();
+		logger.debug("User " + securityService.getLoggedUser() + " is tring to login");
 		return accountDAO.findByUsername(user.getUsername());
 	}
 

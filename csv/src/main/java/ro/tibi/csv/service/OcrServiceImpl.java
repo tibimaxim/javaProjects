@@ -8,6 +8,8 @@ import java.text.ParseException;
 
 import javax.imageio.ImageIO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +21,8 @@ import ro.tibi.csv.util.Constants.Sex;
 
 @Service
 public class OcrServiceImpl implements OcrService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(OcrServiceImpl.class);
 
 	@Transactional
 	public void fillClientDataFromCIScan(Client client, byte[] ocrArea) throws IOException {
@@ -64,8 +68,7 @@ public class OcrServiceImpl implements OcrService {
 		try {
 			client.setDateOfBirth(Constants.CI_DATEFORMAT.parse(dateOfBirthString));
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			logger.error("Error parsing OCR dateOfBirth: "+e1);
 		}
 
 		// the sex can be found at char 11
@@ -75,8 +78,7 @@ public class OcrServiceImpl implements OcrService {
 		try {
 			client.setSex(Sex.valueOf(sexString));
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			logger.error("Error casting OCR sex to enum: "+e1);
 		}
 
 		// expire date is found at char 12 and is 6 chars long
@@ -84,8 +86,7 @@ public class OcrServiceImpl implements OcrService {
 		try {
 			client.setExpireDate(Constants.CI_DATEFORMAT.parse(expireDateString));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Error parsing OCR expirationDate: "+e);
 		}
 
 		// the last 6 chars of the security are located at the end of String

@@ -10,84 +10,116 @@
 	});
 </script>
 <div class="container">
-	<h2>Client {{fullName}}</h2>
-	<div class="clientContainer">
-		<div class="rTable">
-			<div class="tRow">
-				<p class="securityCode">
-					CNP: <input type="text" ng-value="client.securityCode"
-						ng-model="client.securityCode" />
-				</p>
-				<p class="serialCode">
-					Seria: <input type="text" ng-value="client.serialCode"
-						ng-model="client.serialCode" />
-				</p>
-
-
-				<p class="serialNumber">
-					Nr:<input type="text" ng-value="client.serialNumber"
-						ng-model="client.serialNumber" />
-				</p>
-			</div>
-			<div class="tRow">
-				<p class="lastName">
-					Nume: <input type="text" ng-value="client.lastName"
-						ng-model="client.lastName" />
-				</p>
-				<p class="sex">
-					Sex: <input type="text" ng-value="client.sex" ng-model="client.sex" />
-				</p>
-			</div>
-			<div class="tRow">
-				<p class="firstName1">
-					Prenume 1: <input type="text" ng-value="client.firstName1"
-						ng-model="client.firstName1" />
-				</p>
-				<p class="firstName2">
-					Prenume 2: <input type="text" ng-value="client.firstName2"
-						ng-model="client.firstName2" />
-				</p>
-			</div>
-			<div class="tRow">
-				<p class="dateOfBirth">
-					Data nasterii: <input type="text"
-						value="{{client.dateOfBirth | date : 'dd-MM-yyyy'}}"
-						id="dateOfBirthDatePicker">
-				</p>
-				<p class="expireDate">
-					Data expirare buletin: <input type="text"
-						value="{{client.expireDate | date : 'dd-MM-yyyy'}}"
-						id="expireDateDatePicker">
-				</p>
-			</div>
-
-			<div class="tRow">
-				<p class="singleLineInfo">
-					Email: <input type="text" ng-value="client.emailAddress"
-						ng-model="client.emailAddress" />
-				</p>
-			</div>
-
-			<div class="tRow">
-				<p class="singleLineInfo">
-					Telefon: <input type="text" ng-value="client.phoneNumber"
-						ng-model="client.phoneNumber" />
-				</p>
-			</div>
-			<div class="tRow">
-				<p class="singleLineInfo">
-				<p>
-					Adresa: <input type="text" ng-value="client.address"
-						ng-model="client.address" />
-				</p>
-			</div>
+	<div ng-show="showUploadForm !== null && showUploadForm == true">
+		<h2>Incarca poza CI</h2>
+		<div class="clientContainer">
+			<input type="file" ng-file-model="uploadFile" /> 
+			<br />
+				<p>Poza trebuie sa fie crop pe zona de OCR de pe CI in format jpg.</p>
+			<hr/>
+			<span class="button"
+				ng-click="saveFromFile()">Salveaza Client</span> <br />
+			<hr/>
+			<span class="button" 
+			ng-click="toggleShowUploadForm()">Inapoi la introducere manuala</span> <br />
 		</div>
+	</div>
+	<div ng-show="showUploadForm !== true">
+		<h2>Client {{fullName}}</h2>
+		<div ng-show="showUploadButton != undefined && showUploadButton != null">
+		<span class="button" 
+			ng-click="toggleShowUploadForm()">Incarca din poza CI</span> <br />
+			<hr />
+		</div>
+		<div class="clientContainer">
+			<div class="rTable">
+				<div class="tRow">
+					<p class="securityCode">
+						CNP: <input type="text" ng-value="client.securityCode"
+							ng-model="client.securityCode" />
+					</p>
+					<p class="serialCode">
+						Seria: <input type="text" ng-value="client.serialCode"
+							ng-model="client.serialCode" />
+					</p>
 
-		<span class="button" ng-click="save()">Salveaza modificarile</span> <br />
+
+					<p class="serialNumber">
+						Nr:<input type="text" ng-value="client.serialNumber"
+							ng-model="client.serialNumber" />
+					</p>
+				</div>
+				<div class="tRow">
+					<p class="lastName">
+						Nume: <input type="text" ng-value="client.lastName"
+							ng-model="client.lastName" />
+					</p>
+					<p class="sex">
+						Sex: <input type="text" ng-value="client.sex"
+							ng-model="client.sex" />
+					</p>
+				</div>
+				<div class="tRow">
+					<p class="firstName1">
+						Prenume 1: <input type="text" ng-value="client.firstName1"
+							ng-model="client.firstName1" />
+					</p>
+					<p class="firstName2">
+						Prenume 2: <input type="text" ng-value="client.firstName2"
+							ng-model="client.firstName2" />
+					</p>
+				</div>
+				<div class="tRow">
+					<p class="dateOfBirth">
+						Data nasterii: <input type="text"
+							value="{{client.dateOfBirth | date : 'dd-MM-yyyy'}}"
+							id="dateOfBirthDatePicker">
+					</p>
+					<p class="expireDate">
+						Data expirare buletin: <input type="text"
+							value="{{client.expireDate | date : 'dd-MM-yyyy'}}"
+							id="expireDateDatePicker">
+					</p>
+				</div>
+
+				<div class="tRow">
+					<p class="singleLineInfo">
+						Email: <input type="text" ng-value="client.emailAddress"
+							ng-model="client.emailAddress" />
+					</p>
+				</div>
+
+				<div class="tRow">
+					<p class="singleLineInfo">
+						Telefon: <input type="text" ng-value="client.phoneNumber"
+							ng-model="client.phoneNumber" />
+					</p>
+				</div>
+				<div class="tRow">
+					<p class="singleLineInfo">
+					<p>
+						Adresa: <input type="text" ng-value="client.address"
+							ng-model="client.address" />
+					</p>
+				</div>
+			</div>
+
+			<span class="button" ng-click="save()">Salveaza modificarile</span> <br />
+			<hr ng-show="client.id !== null" />
+			<span class="button" ng-show="client.id !== null" ng-click="toggleDeletePopUp()">Sterge Client</span> <br />
+		</div>
 	</div>
 	<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
 
 	<div class="successMessage" ng-if="successMessage !== null">
 		{{successMessage}}</div>
+<div class="overlay" ng-show="overlay !== null && overlay == true">
+<div class="overlay-content">
+Esti sigur ca vrei sa stergi clientul {{fullName}} ?
+<div class="overlay-nav">
+<a href="" class="button" ng-click="deleteClient()"> OK </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="" class="button" ng-click="toggleDeletePopUp()"> Cancel </a>
+</div>
+</div> 
 
 </div>
