@@ -3,6 +3,7 @@ package ro.tibi.csv.util;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+
 public class Constants {
 	
 	public enum AccountStatus{
@@ -13,5 +14,8 @@ public class Constants {
 		M,F
 	}
 	
-	public static DateFormat CI_DATEFORMAT = new SimpleDateFormat("YYMMdd");
+	public static DateFormat CI_DATEFORMAT = new SimpleDateFormat("yyMMdd");
+	
+	
+	
 }

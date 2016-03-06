@@ -1,15 +1,13 @@
 package ro.tibi.csv.setup;
 
-import javax.servlet.MultipartConfigElement;
-
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.context.embedded.MultipartConfigFactory;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.google.common.base.Predicates;
@@ -36,12 +34,10 @@ public class StartUp extends SpringBootServletInitializer {
 				.paths(PathSelectors.any()).build();
 	}
 
+	
 	@Bean
-	public MultipartConfigElement multipartConfigElement() {
-		MultipartConfigFactory factory = new MultipartConfigFactory();
-		factory.setMaxFileSize("15MB");
-		factory.setMaxRequestSize("15MB");
-		return factory.createMultipartConfig();
-	}
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
 }

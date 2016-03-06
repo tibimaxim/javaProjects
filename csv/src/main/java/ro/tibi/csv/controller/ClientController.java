@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javassist.NotFoundException;
+import net.sourceforge.tess4j.TesseractException;
 import ro.tibi.csv.dto.ClientSearchDTO;
 import ro.tibi.csv.dto.IdentityCardScanDTO;
 import ro.tibi.csv.repository.Client;
@@ -68,18 +69,11 @@ public class ClientController {
 		return clientService.deleteClient(id);
 	}
 	
-	@Secured({"ROLE_USER"})
-	@RequestMapping(value = "/createFromUpload", method = RequestMethod.POST)
-	public Client deleteClient(@RequestParam("file") MultipartFile file) throws IOException {
-		  byte[] bytes = file.getBytes();
-		  IdentityCardScanDTO identityCardScanDTO = new IdentityCardScanDTO();
-		  identityCardScanDTO.setIdentityCardOcrAreaScan(bytes);
-		return clientService.createFromOcr(identityCardScanDTO);
-	}
+
 	
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value = "/saveIdentityCardData", method = RequestMethod.POST, consumes = "application/json")
-	public Client saveIdentityCardData(@RequestBody IdentityCardScanDTO identityCardScanDTO) throws IOException {
+	public Client saveIdentityCardData(@RequestBody IdentityCardScanDTO identityCardScanDTO) throws IOException, TesseractException {
 		return clientService.createFromOcr(identityCardScanDTO);
 	}
 

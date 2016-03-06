@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.sourceforge.tess4j.TesseractException;
 import ro.tibi.csv.dto.IdentityCardScanDTO;
 import ro.tibi.csv.repository.Client;
 import ro.tibi.csv.service.ClientService;
@@ -27,7 +28,7 @@ public class ExternalController {
 	private ClientService clientService;
 
 	@RequestMapping(value = "/saveIdentityCardData", method = RequestMethod.POST, consumes = "application/json")
-	public Client saveIdentityCardData(@RequestBody IdentityCardScanDTO identityCardScanDTO) throws IOException {
+	public Client saveIdentityCardData(@RequestBody IdentityCardScanDTO identityCardScanDTO) throws IOException, TesseractException {
 		return clientService.createFromOcr(identityCardScanDTO);
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javassist.NotFoundException;
+import net.sourceforge.tess4j.TesseractException;
 import ro.tibi.csv.dao.ClientDAO;
 import ro.tibi.csv.dto.ClientSearchDTO;
 import ro.tibi.csv.dto.IdentityCardScanDTO;
@@ -67,7 +68,7 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public Client createFromOcr(IdentityCardScanDTO identityCardScanDTO) throws IOException {
+	public Client createFromOcr(IdentityCardScanDTO identityCardScanDTO) throws IOException, TesseractException {
 		Client client = new Client();
 		ocrService.fillClientDataFromCIScan(client, identityCardScanDTO.getIdentityCardOcrAreaScan());
 		return clientDAO.save(client);
