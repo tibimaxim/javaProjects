@@ -1,0 +1,32 @@
+<div class="container">
+	<h2 class="page-header">Contul meu: {{user.username}}</h2>
+	<div class="accountBox">
+		<p>Utilizator: {{user.username}}</p>
+		<hr />
+		<p>Roluri:</p>
+		<ul ng-repeat="roleItem in user.roles">{{roleItem.role}}
+		</ul>
+		<hr />
+		Status: {{user.status}}
+	</div>
+	<div class="actionBox">
+		<p>Modifica parola:</p>
+		<hr />
+		<p>
+			Parola Noua: <input type="password" ng-model="newPassword" />
+		</p>
+		<p>
+			Confirma: <input type="password" ng-model="confirmPassword"
+				on-Enter="changePassword()" />
+		</p>
+		<hr />
+		<span class="button" ng-click="changePassword()"> Modifica </span>
+		<hr/>
+		<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+
+		<div class="successMessage" ng-if="successMessage !== null">
+			{{successMessage}}</div>
+	</div>
+
+
+</div>

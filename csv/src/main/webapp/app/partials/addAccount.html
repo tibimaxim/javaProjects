@@ -1,32 +1,80 @@
 <div class="container">
-	<h2 class="page-header">Contul nou</h2>
-	<div class="accountBox">
-		<p>Detalii Utilizator:</p>
-		<hr />
-		<p>Utilizator: <input type="text" ng-model="user.username" /></p>
-		<p>Parola: <input type="password" ng-model="user.password" /></p>
-		<p>Status: <input type="text" ng-model="user.status" /></p>
-		<hr />
-		<span class="button" ng-click="save()"> Adauga </span>
-	</div>
-	<div class="actionBox">
-		<p>Roluri:</p>
-		<hr />
-		<p>
-			Rol: <input type="text" ng-model="currentRole" />
-		</p>
-		<hr />
-		<span class="button" ng-click="addRole()">Adauga</span>
-		<hr />
-		<p>Roluri atasate:</p>
-		<ul ng-repeat="roleItem in roles">{{roleItem.role}} <a href="" ng-click="removeRole(roleItem.role)">X</a></ul>
-	</div>
-	
-		<hr/>
-		<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+	<div class="fullgray ng-scope">
+		<div class="container-all wpsPortletBody">
+			<div class="myaccount-base">
+				<div class="boxstyle">
+					<br>
+					<h1 id="pagetitle" class="pagetitle ng-binding"">
+						<span class="light">Adauga </span> <span class="medium">utilizator:
+						</span><span class="dark">{{user.username}}</span>
+					</h1>
+					<br />
+					<div class="myaccount-heading">
+						<span class="light">Date </span> <span class="medium">cont:</span>
+					</div>
+					<table class="fullTable myaccount_info_box">
+						<tbody>
+							<tr>
+								<td>Utilizator:</td>
+								<td><input ng-model="user.username" /></td>
 
-		<div class="successMessage" ng-if="successMessage !== null">
-			{{successMessage}}</div>
+							</tr>
+							<tr>
+								<td>Parola:</td>
+								<td><input type="password" ng-model="user.password" /></td>
 
+							</tr>
+							<tr>
+								<td>Status:</td>
+
+								<td><select name="status" id="status" ng-model="user.status">
+											<option value="REQUESTED">REQUESTED</option>
+											<option value="ONLINE">ONLINE</option></select></td>
+
+							</tr>
+						</tbody>
+					</table>
+					<br />
+					<div class="myaccount-heading">
+						<span class="light">Adauga </span> <span class="medium">Roluri:</span>
+					</div>
+					
+					<table class="fullTable myaccount_info_box">
+						<tbody>
+							<tr>
+								<td>Rol:</td>
+								<td><select name="status" id="status" ng-model="currentRole">
+											<option value="USER">USER</option>
+											<option value="ADMIN">ADMIN</option></select></td>
+							<td><a class="cursor orangeHover" ng-click="addRole()">Adauga</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+					<br />
+					<div class="myaccount-heading">
+						<span class="light">Roluri </span> <span class="medium">curente:</span>
+					</div>
+					<table class="fullTable myaccount_info_box">
+						<tbody>
+							<tr ng-repeat="roleItem in roles">
+								<td>{{roleItem.role}}</td>
+								<td><a class="cursor orangeHover"  ng-click="removeRole(roleItem.role)">X</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+					<br/>
+					<a class="cursor orangeHover" class="button" ng-click="save()"> Adauga Utilizator </a>
+					<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+
+					<div class="successMessage" ng-if="successMessage !== null">
+						{{successMessage}}</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
 
 </div>
+

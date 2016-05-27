@@ -1,31 +1,30 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target=".navbar-ex1-collapse">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#/">CSV</a>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse"  ng-controller="HeaderCtrl" ng-init="getUserFromServices()">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#/search">Cauta Clienti</a></li>
-				<li><a href="#/create">Adauga Client</a></li>
-				<li ng-show="showAdminPages == true" class="dropdown"><a class="dropdown-toggle"
+<div class="header" ng-controller="HeaderCtrl" ng-init="getUserFromServices()">
+    <header>
+        <a href="#/">
+            <img id="logo" src="../images/header.png" alt="NN direct" border="0">
+        </a>
+    </header>
+    
+    <div class="clear"></div>
+    <div class="content" >
+        <nav>
+            <ul style="float:left">
+            <li><a class="cursor orangeHover" href="#/search">Cauta Clienti</a></li>
+				<li><a class="cursor orangeHover" href="#/create">Adauga Client</a></li>
+				<li class="cursor orangeHover" ng-show="showAdminPages == true" ><a class="dropdown-toggle"
 					data-toggle="dropdown">Administrare Utilizatori<b class="caret"></b></a>
 					<ul class="dropdown-menu" >
-						<li><a href="#/accounts">Cautare Utilizatori</a></li>
-						<li><a href="#/adaugare">Adaugare Utilizator</a></li>
+						<li><a class="cursor orangeHover" href="#/accounts">Cautare Utilizatori</a></li>
+						<li><a class="cursor orangeHover" href="#/adaugare">Adaugare Utilizator</a></li>
 					</ul></li>
-				<li><a href="#/myAccount">Datele Mele</a></li>
-				<li><a href="#/logout">Delogare</a></li>
-			</ul>
-		</div>
-		<!-- /.navbar-collapse -->
-	</div>
-	<!-- /.container -->
-</nav>
+				<li><a class="cursor orangeHover" href="#/myAccount">Datele Mele</a></li>
+			</ul>	
+            <ul style="float:right;" class="myaccount">			  
+             <li><a class="cursor orangeHover" href="#/logout">Delogare</a></li>
+            </ul>
+            <div class="clear"></div>
+        </nav>
+        <div class="clear"></div>
+    </div>
+</div>
+<hr />

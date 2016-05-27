@@ -1,0 +1,59 @@
+<div class="container">
+	<h2 class="page-header">Cauta Clienti</h2>
+	<div class="searchBox">
+		<table>
+			<tr>
+				<td>CNP:</td>
+				<td><input type="text" ng-value="clientSearch.securityCode"
+					ng-model="clientSearch.securityCode" on-Enter="search()" /></td>
+			</tr>
+			<tr>
+				<td>Nume:</td>
+
+				<td><input type="text" ng-value="clientSearch.name"
+					ng-model="clientSearch.name" on-Enter="search()" /></td>
+			</tr>
+			<tr>
+				<td>Prenume:</td>
+				<td><input type="text" ng-value="clientSearch.firstName"
+					ng-model="clientSearch.firstName" on-Enter="search()" /></td>
+			</tr>
+		</table>
+		<br> <span class="button" ng-click="search()">Cauta</span>
+	</div>
+	<br>
+	<hr />
+	<div class="responseBox">
+		<div class="responseBoxHeader"
+			ng-show="results !== null && results.length > 0">
+			<h3>Rezultate</h3>
+			<div class="resultTable">
+				<div class="rTable">
+					<div class="rTableRow">
+						<div class="rTableHead">&nbsp;</div>
+						<div class="rTableHead">Nume</div>
+						<div class="rTableHead">Prenume 1</div>
+						<div class="rTableHead">Prenume 2</div>
+						<div class="rTableHead">cnp</div>
+						<div class="rTableHead">Data nasterii</div>
+					</div>
+					<div class="rTableRow" ng-repeat="result in results">
+						<div class="rTableCell">
+							<a href="#/client/{{result.id}}">Detalii</a>
+						</div>
+						<div class="rTableCell">{{result.lastName}}</div>
+						<div class="rTableCell">{{result.firstName1}}</div>
+						<div class="rTableCell">{{result.firstName2}}</div>
+						<div class="rTableCell">{{result.securityCode }}</div>
+						<div class="rTableCell">{{result.dateOfBirth | date :
+							"dd-MM-yyyy"}}</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<h3 ng-show="results !== null && results.length == 0">Cautarea nu
+			a intors rezultate.</h3>
+	</div>
+
+</div>

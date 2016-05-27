@@ -1,49 +1,51 @@
 <div class="container">
-	<h2 class="page-header">Cauta Clienti</h2>
-	<div class="searchBox">
-		<table>
-			<tr>
-				<td>Utilizator:</td>
-				<td><input type="text" ng-model="username" on-Enter="search()" /></td>
-			</tr>
+	<div class="fullgray ng-scope">
+		<div class="container-all wpsPortletBody">
+			<div class="myaccount-base">
+				<div class="boxstyle">
+					<br>
+					<h1 id="pagetitle" class="pagetitle ng-binding" "> 
+						<span class="light">Cauta </span> <span class="medium">Utilizatori</span>
+					</h1> <br/>
+					<table class="fullTable myaccount_info_box">
+						<tbody>
+							<tr>
+								<td>Utilizator:</td>
+								<td><input type="text" ng-model="username" on-Enter="search()" /></td>
 
-		</table>
-		<br> <span class="button" ng-click="search()">Cauta
-			Utilizator</span>
-	</div>
-	<br>
-	<hr />
-	<div class="responseBox">
-		<div class="responseBoxHeader"
-			ng-show="results !== null && results.length > 0">
-			<h3>Rezultate</h3>
-			<div class="resultTable">
-				<div class="rTable">
-					<div class="rTableRow">
-						<div class="rTableHead">&nbsp;</div>
-						<div class="rTableHead">Utilizator</div>
-						<div class="rTableHead">Status</div>
-						<div class="rTableHead">Roluri</div>
-					</div>
-					<div class="rTableRow" ng-repeat="result in results">
-						<div class="rTableCell">
-							<a href="#/account/{{result.id}}">Detalii</a>
-						</div>
-						<div class="rTableCell">{{result.username}}</div>
-						<div class="rTableCell">{{result.status}}</div>
-						<div class="rTableCell">
-							<ul ng-repeat="roleItem in result.roles">{{roleItem.role}}
-							</ul>
-						</div>
-					</div>
+							</tr>
+							
+						</tbody>
+					</table>
+					<br> <a class="cursor orangeHover" ng-click="search()">Cauta</a>
 
+					<br>
+					<hr ng-show="results !== null && results.length > 0" />
+					<table class="fullTable payments_history"
+						ng-show="results !== null && results.length > 0">
+						<tbody>
+							<tr>
+								<td width="100">&nbsp;</td>
+								<td width="100">Utilizator</td>
+								<td width="100">Status</td>
+								<td width="100">Roluri</td>
+							</tr>
+							<tr ng-repeat="result in results">
+								<td width="100"><a href="#/account/{{result.id}}">Detalii</a></td>
+								<td width="100">{{result.username}}</td>
+								<td width="100">{{result.status}}</td>
+								<td width="100"><p ng-repeat="roleItem in result.roles">{{roleItem.role}}
+							</p></td>
+							</tr>
+						</tbody>
+					</table>
+					<br/>
+					<h3 ng-show="results !== null && results.length == 0">Cautarea
+						nu a intors rezultate.</h3>
 				</div>
 			</div>
+			<div class="clear"></div>
 		</div>
-
-		<h3 ng-show="results !== null && results.length == 0">Cautarea nu
-			a intors rezultate.</h3>
 	</div>
 
 </div>
-

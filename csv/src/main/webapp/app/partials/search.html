@@ -1,59 +1,73 @@
 <div class="container">
-	<h2 class="page-header">Cauta Clienti</h2>
-	<div class="searchBox">
-		<table>
-			<tr>
-				<td>CNP:</td>
-				<td><input type="text" ng-value="clientSearch.securityCode"
-					ng-model="clientSearch.securityCode" on-Enter="search()" /></td>
-			</tr>
-			<tr>
-				<td>Nume:</td>
+	<div class="fullgray ng-scope">
+		<div class="container-all wpsPortletBody">
+			<div class="myaccount-base">
+				<div class="boxstyle">
+					<br>
+					<h1 id="pagetitle" class="pagetitle ng-binding" "> 
+						<span class="light">Cauta </span> <span class="medium">clienti</span>
+					</h1> <br/>
+					<table class="fullTable myaccount_info_box">
+						<tbody>
+							<tr>
+								<td>CNP:</td>
+								<td><input type="text" ng-value="clientSearch.securityCode"
+									ng-model="clientSearch.securityCode" on-Enter="search()" /></td>
 
-				<td><input type="text" ng-value="clientSearch.name"
-					ng-model="clientSearch.name" on-Enter="search()" /></td>
-			</tr>
-			<tr>
-				<td>Prenume:</td>
-				<td><input type="text" ng-value="clientSearch.firstName"
-					ng-model="clientSearch.firstName" on-Enter="search()" /></td>
-			</tr>
-		</table>
-		<br> <span class="button" ng-click="search()">Cauta</span>
-	</div>
-	<br>
-	<hr />
-	<div class="responseBox">
-		<div class="responseBoxHeader"
-			ng-show="results !== null && results.length > 0">
-			<h3>Rezultate</h3>
-			<div class="resultTable">
-				<div class="rTable">
-					<div class="rTableRow">
-						<div class="rTableHead">&nbsp;</div>
-						<div class="rTableHead">Nume</div>
-						<div class="rTableHead">Prenume 1</div>
-						<div class="rTableHead">Prenume 2</div>
-						<div class="rTableHead">cnp</div>
-						<div class="rTableHead">Data nasterii</div>
-					</div>
-					<div class="rTableRow" ng-repeat="result in results">
-						<div class="rTableCell">
-							<a href="#/client/{{result.id}}">Detalii</a>
-						</div>
-						<div class="rTableCell">{{result.lastName}}</div>
-						<div class="rTableCell">{{result.firstName1}}</div>
-						<div class="rTableCell">{{result.firstName2}}</div>
-						<div class="rTableCell">{{result.securityCode }}</div>
-						<div class="rTableCell">{{result.dateOfBirth | date :
-							"dd-MM-yyyy"}}</div>
-					</div>
+							</tr>
+							<tr>
+								<td>Nume:</td>
 
+								<td><input type="text" ng-value="clientSearch.name"
+									ng-model="clientSearch.name" on-Enter="search()" /></td>
+
+							</tr>
+
+							<tr>
+								<td>Prenume:</td>
+								<td><input type="text" ng-value="clientSearch.firstName"
+									ng-model="clientSearch.firstName" on-Enter="search()" /></td>
+							</tr>
+
+						</tbody>
+					</table>
+					<br> <a class="cursor orangeHover" ng-click="search()">Cauta</a>
+
+					<br>
+					<hr ng-show="results !== null && results.length > 0" />
+					<table class="fullTable payments_history"
+						ng-show="results !== null && results.length > 0">
+						<tbody>
+							<tr>
+								<td width="100">&nbsp;</td>
+								<td width="100">Nume</td>
+								<td width="100">Prenume 1</td>
+								<td width="100">Prenume 2</td>
+								<td width="160">CNP</td>
+								<td width="100">Data nasterii</td>
+							</tr>
+							<tr ng-repeat="result in results">
+								<td width="100"><a class="cursor orangeHover"
+									href="#/client/{{result.id}}">Detalii</a></td>
+								<td width="100">{{result.lastName}}</td>
+								<td width="100">{{result.firstName1}}</td>
+								<td width="100">{{result.firstName2}}</td>
+								<td width="160">{{result.securityCode}}</td>
+								<td width="100">{{result.dateOfBirth | date :
+									"dd-MM-yyyy"}}</td>
+							</tr>
+
+
+						</tbody>
+					</table>
+					<br/>
+					<h3 ng-show="results !== null && results.length == 0">Cautarea
+						nu a intors rezultate.</h3>
 				</div>
 			</div>
+			<div class="clear"></div>
 		</div>
-		<h3 ng-show="results !== null && results.length == 0">Cautarea nu
-			a intors rezultate.</h3>
 	</div>
 
+</div>
 </div>

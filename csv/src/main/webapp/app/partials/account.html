@@ -1,32 +1,64 @@
 <div class="container">
-	<h2 class="page-header">Contul meu: {{user.username}}</h2>
-	<div class="accountBox">
-		<p>Utilizator: {{user.username}}</p>
-		<hr />
-		<p>Roluri:</p>
-		<ul ng-repeat="roleItem in user.roles">{{roleItem.role}}
-		</ul>
-		<hr />
-		Status: {{user.status}}
-	</div>
-	<div class="actionBox">
-		<p>Modifica parola:</p>
-		<hr />
-		<p>
-			Parola Noua: <input type="password" ng-model="newPassword" />
-		</p>
-		<p>
-			Confirma: <input type="password" ng-model="confirmPassword"
-				on-Enter="changePassword()" />
-		</p>
-		<hr />
-		<span class="button" ng-click="changePassword()"> Modifica </span>
-		<hr/>
-		<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+	<div class="fullgray ng-scope">
+		<div class="container-all wpsPortletBody">
+			<div class="myaccount-base">
+				<div class="boxstyle">
+					<br>
+					<h1 id="pagetitle" class="pagetitle ng-binding"">
+						<span class="light">Utilizator: </span> <span class="medium">{{user.username}}
+						</span>
+					</h1>
+					<br />
+					<div class="myaccount-heading">
+						<span class="light">Date </span> <span class="medium">cont:</span>
+					</div>
+					<table class="fullTable myaccount_info_box">
+						<tbody>
+							<tr>
+								<td>Status:</td>
+								<td>{{user.status}}</td>
 
-		<div class="successMessage" ng-if="successMessage !== null">
-			{{successMessage}}</div>
-	</div>
+							</tr>
+							<tr>
+								<td>Roluri:</td>
 
+								<td><p ng-repeat="roleItem in user.roles">{{roleItem.role}}
+									</p></td>
+
+							</tr>
+						</tbody>
+					</table>
+					<br />
+					<div class="myaccount-heading">
+						<span class="light">Modifica </span> <span class="medium">parola:</span>
+					</div>
+					<table class="fullTable myaccount_info_box">
+						<tbody>
+							<tr>
+								<td>Parola Noua:</td>
+								<td><input type="password" ng-model="newPassword" /></td>
+
+							</tr>
+							<tr>
+								<td>Confirma:</td>
+
+								<td><input type="password" ng-model="confirmPassword"
+									on-Enter="changePassword()" /></td>
+
+							</tr>
+						</tbody>
+					</table>
+					<br /> <a class="cursor orangeHover" ng-click="changePassword()">
+						Modifica </a>
+					<hr />
+					<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
+
+					<div class="successMessage" ng-if="successMessage !== null">
+						{{successMessage}}</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
 
 </div>

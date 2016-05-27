@@ -60,7 +60,7 @@ public class AccountController {
 		return accountService.getAccounts();
 	}
 
-	@Secured({ "ROLE_ADMIN" })
+//	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = "/saveAccount", method = RequestMethod.POST, consumes = "application/json")
 	public Account saveAccount(@RequestBody AccountCreationDTO accountCreationDTO) {
 		return accountService.createAccount(accountCreationDTO);

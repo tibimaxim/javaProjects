@@ -19,7 +19,7 @@ app.config(['$routeProvider', function ($routeProvider) {
     .when("/accounts", {templateUrl: "partials/accounts.html", controller: "AccountsCtrl"})
     .when("/account/:id", {templateUrl: "partials/account.html", controller: "AccountCtrl"})
     .when("/adaugare", {templateUrl: "partials/addAccount.html", controller: "AddAccountCtrl"})
-    .when("/myAccount", {templateUrl: "partials/myAccount.html", controller: "MyAccountCtrl"})
+    .when("/myAccount", {templateUrl: "partials/account.html", controller: "MyAccountCtrl"})
     .otherwise({redirectTo: '/search'});
 }]);
 
