@@ -907,7 +907,7 @@ a.orangeHover:hover {
 .content nav li {float:left; padding:3px 0;display:block;position:relative; margin-right: 8px;}
 .content nav .myaccount>li {padding: 3px 10px 0px 2px;}
 .content nav li.sel {background: #003466;}
-.content nav li a {display: block; height:30px; line-height: 30px; padding:0 7px 0 0; color:#414141; font-size: 16px;}
+.content nav li a {display: block; height:30px; line-height: 30px; padding:0 7px 0 0; color:#414141; font-size: 18px; font-weight: bold;}
 .content nav li a.sel{color: #ee7f00}
 .sel, .sel>a {color: #ee7f00}
 .content nav li:first-child a {border-left:0;}
@@ -2395,4 +2395,51 @@ h1.myaccount_ttls {
 
 .insurance_stats_c td.fs14 {
     font-size: 14px;
+}
+
+.button {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.address_bar {
+	width: 600px!important;
+}
+.popup {
+  position: fixed;
+  padding: 10px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  height: 180px;
+  top: 50%;
+  margin-top: -100px;
+  background: #FFF;
+  z-index: 20;
+}
+
+#popup2:after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -2;
+}
+
+#popup2:before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #FFF;
+  z-index: -1;
+}
+
+.error {
+	color: red!important;
 }

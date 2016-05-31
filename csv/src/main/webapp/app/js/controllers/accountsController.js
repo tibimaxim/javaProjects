@@ -3,6 +3,7 @@ app.controller('AccountsCtrl', function($scope, $http) {
 	$scope.results= null;
 	$scope.username="";
 
+
 	$scope.search = function() {
 		$http({
 			url : accountServicesPath + "searchAccounts",

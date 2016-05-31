@@ -23,11 +23,28 @@
 								<td>Roluri:</td>
 
 								<td><p ng-repeat="roleItem in user.roles">{{roleItem.role}}
-									</p></td>
-
+									<a ng-if="isAdmin === true" class="button cursor orangeHover"  ng-click="removeRole(roleItem.role)">&nbsp;&nbsp;X</a></p></td>
 							</tr>
 						</tbody>
 					</table>
+					<div class="myaccount-heading" ng-show="isAdmin === true">
+						<span class="light">Adauga </span> <span class="medium">Roluri:</span>
+					</div>
+					<table class="fullTable myaccount_info_box" ng-show="isAdmin === true">
+						<tbody>
+							<tr>
+								<td>Rol:</td>
+								<td><select name="status" id="status" ng-model="currentRole">
+											<option value="USER">USER</option>
+											<option value="ADMIN">ADMIN</option></select></td>
+							<td><a class="cursor orangeHover" ng-click="addRole()">Adauga</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+					<br ng-show="isAdmin === true" /> <a ng-if="isAdmin === true" class="button cursor orangeHover" ng-click="saveRoles()">
+						Salveaza roluri </a>
+					<hr ng-show="isAdmin === true"/>
 					<br />
 					<div class="myaccount-heading">
 						<span class="light">Modifica </span> <span class="medium">parola:</span>
@@ -48,7 +65,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<br /> <a class="cursor orangeHover" ng-click="changePassword()">
+					<br /> <a class="button cursor orangeHover" ng-click="changePassword()">
 						Modifica </a>
 					<hr />
 					<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>

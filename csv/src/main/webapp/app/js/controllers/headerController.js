@@ -13,7 +13,6 @@ app.controller('HeaderCtrl', function($scope, $http) {
 		}).success(function(serverData) {
 			$scope.user = serverData;
 			$scope.showAdminPages = hasRole(serverData,'ADMIN');
-			console.log($scope.showAdminPages);
 		})
 
 	};

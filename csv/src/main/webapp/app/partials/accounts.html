@@ -17,7 +17,7 @@
 							
 						</tbody>
 					</table>
-					<br> <a class="cursor orangeHover" ng-click="search()">Cauta</a>
+					<br> <a class="errorMessage cursor orangeHover" ng-click="search()">Cauta</a>
 
 					<br>
 					<hr ng-show="results !== null && results.length > 0" />
@@ -31,7 +31,7 @@
 								<td width="100">Roluri</td>
 							</tr>
 							<tr ng-repeat="result in results">
-								<td width="100"><a href="#/account/{{result.id}}">Detalii</a></td>
+								<td width="100"><a  class="cursor orangeHover" href="#/account/{{result.id}}">Detalii</a></td>
 								<td width="100">{{result.username}}</td>
 								<td width="100">{{result.status}}</td>
 								<td width="100"><p ng-repeat="roleItem in result.roles">{{roleItem.role}}

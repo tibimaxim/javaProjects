@@ -103,29 +103,40 @@
 								</tr>
 								<tr>
 									<td>Adresa:</td>
-									<td><input type="text" ng-value="client.address"
+									<td colspan="3"><input class="address_bar" type="text" ng-value="client.address"
 										ng-model="client.address" /></td>
-									<td></td>
-									<td></td>
+
+									
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<br /> <a class="cursor orangeHover" ng-click="save()">Salveaza
+					<br /> <a class="button cursor orangeHover" ng-click="save()">Salveaza
 						Modificarile</a> <a ng-show="client.id !== null"
-						class="cursor orangeHover" ng-click="toggleDeletePopUp()">Sterge
+						class="button cursor orangeHover fright" ng-click="toggleDeletePopUp()">Sterge
 						Client</a> <br /> <br />
 					<hr ng-if="successMessage !== null || errorMessage !==null">
-					<h3 class="successMessage" ng-if="successMessage !== null">
-						{{successMessage}}</h3>
-					<h3 class="successMessage" ng-if="errorMessage !== null">
-						{{errorMessage}}</h3>
+					<p class="successMessage" ng-if="successMessage !== null">
+						{{successMessage}}</p>
+					<div class="error" ng-if="errorMessage !== null">A aparut o eroare.</div>
 				</div>
 			</div>
 		</div>
 		<div class="clear"></div>
 	</div>
 </div>
+
+<div class="popup" id="popup2" ng-if="overlay === true">
+  <div class="myaccount-heading">
+						<span class="light">Confirmare </span> <span class="medium">stergere </span><span class="dark">client!</span>
+					</div>
+  <p>Esti sigur ca vrei sa stergi acest client?</p>
+  <br/> <br/>
+  <a class="button cursor orangeHover" ng-click="deleteClient()"> OK </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a class="button cursor orangeHover" ng-click="toggleDeletePopUp()"> Cancel </a>
+</div>
+
+
 
 
 

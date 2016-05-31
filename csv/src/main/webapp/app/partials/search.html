@@ -31,7 +31,7 @@
 
 						</tbody>
 					</table>
-					<br> <a class="cursor orangeHover" ng-click="search()">Cauta</a>
+					<br> <a class="button cursor orangeHover" ng-click="search()">Cauta</a>
 
 					<br>
 					<hr ng-show="results !== null && results.length > 0" />
@@ -61,13 +61,14 @@
 						</tbody>
 					</table>
 					<br/>
-					<h3 ng-show="results !== null && results.length == 0">Cautarea
-						nu a intors rezultate.</h3>
+					<hr ng-show="results !== null && results.length == 0 || error_message !== null"/>
+					<p ng-show="results !== null && results.length == 0">Cautarea
+						nu a intors rezultate.</p>
+					<p class="error" ng-show="error_message !== null ">A aparut o eroare.</p>
 				</div>
 			</div>
 			<div class="clear"></div>
 		</div>
 	</div>
 
-</div>
 </div>

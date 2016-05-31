@@ -8,14 +8,29 @@ app
 					$scope.user = null;
 					$scope.newPassword = null;
 					$scope.confirmPassword = null;
-
+					
+					$scope.isAdmin=false;
+					
+					$scope.currentRole = null;
+					
 					$scope.errorMessage = null;
 					$scope.successMessage = null;
 
 					// on load call getData to pre-fill client
 					$scope.$on('$viewContentLoaded', function($evt, data) {
 						$scope.getUser($routeParams.id);
+						$scope.getUserFromServices();
 					});
+					
+					$scope.removeRole = function(role) {
+						$scope.user.roles.pop(role);
+					}
+					
+					$scope.addRole = function() {
+						var role = {role:$scope.currentRole};
+						console.log($scope.currentRole);
+						$scope.user.roles.push(role);
+					}
 
 					$scope.getUser = function(id) {
 						$http({
@@ -65,6 +80,36 @@ app
 									$scope.errorMessage = serverData.message;
 									$scope.successMessage = null;
 								});
+					};
+					
+					$scope.getUserFromServices = function() {
+						$http({
+							url : accountServicesPath + 'getCurrentAccount',
+							method : 'GET',
+							headers : {
+								'Content-Type' : 'application/json'
+							},
+						}).success(function(serverData) {
+							$scope.isAdmin = hasRole(serverData,'ADMIN');
+						})
+
+					};
+					
+					$scope.saveRoles = function() {
+						$http({
+							url : accountServicesPath + 'updateRoles',
+							method : 'POST',
+							data : $scope.user.roles,
+							params : {id:$scope.id},
+							headers : {
+								'Content-Type' : 'application/json'
+							},
+						}).success(function(serverData) {
+							$scope.successMessage = 'Rolurile au fost modificate';
+						}).error(function(serverData) {
+							$scope.errorMessage = serverData.message;
+							$scope.successMessage = null;
+						});
 					};
 
 				});

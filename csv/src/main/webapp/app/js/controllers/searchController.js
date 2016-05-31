@@ -6,6 +6,7 @@ app.controller('SearchCtrl', function($scope, $http) {
 	}
 	
 	$scope.results= null;
+	$scope.error_message=null;
 
 	$scope.search = function() {
 		$http({
@@ -17,6 +18,8 @@ app.controller('SearchCtrl', function($scope, $http) {
 			},
 		}).success(function(serverData) {
 			$scope.results = serverData;
+		}).error(function(serverData) {
+			$scope.error_message = serverData;
 		});
 	};
 

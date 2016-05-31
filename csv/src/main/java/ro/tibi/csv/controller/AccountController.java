@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javassist.NotFoundException;
 import ro.tibi.csv.dto.AccountCreationDTO;
 import ro.tibi.csv.repository.Account;
+import ro.tibi.csv.repository.Role;
 import ro.tibi.csv.service.AccountService;
 
 @RestController
@@ -51,6 +52,14 @@ public class AccountController {
 	@RequestMapping(value = "/changePasswordForUser", method = RequestMethod.POST)
 	public void changePasswordForUser(@RequestParam(required = true) String password, @RequestParam(required = true) Integer id) throws NotFoundException {
 		accountService.changePasswordForUser(password,id);
+	}
+	
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping(value = "/updateRoles", method = RequestMethod.POST)
+	public void updateRoles(@RequestParam(required = true) Integer id, @RequestBody(required = true) List<Role> roles) throws NotFoundException {
+		Account account = accountService.getAccount(id);
+		account.setRoles(roles);
+		accountService.updateAccount(account);
 	}
 	
 
