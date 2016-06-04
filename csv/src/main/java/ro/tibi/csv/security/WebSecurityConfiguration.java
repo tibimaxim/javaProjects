@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import ro.tibi.csv.dao.AccountDAO;
 import ro.tibi.csv.repository.Account;
+import ro.tibi.csv.util.Constants.AccountStatus;
 
 @Configuration
 class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
@@ -35,7 +36,7 @@ class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
 			@Override
 			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 				Account account = accountDAO.findByUsername(username);
-				if (account != null) {
+				if (account != null && AccountStatus.ONLINE.equals(account.getStatus())) {
 					return new User(account.getUsername(), account.getPassword(), true, true, true, true,
 							AuthorityUtils.createAuthorityList(account.getAuthorities()));
 				} else {

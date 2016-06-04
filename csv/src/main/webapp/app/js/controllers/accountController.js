@@ -111,5 +111,22 @@ app
 							$scope.successMessage = null;
 						});
 					};
+					
+					$scope.blockUnblockAccount = function() {
+						$http({
+							url : accountServicesPath + 'blockUnblockAccount',
+							method : 'POST',
+							params : {id:$scope.id},
+							headers : {
+								'Content-Type' : 'application/json'
+							},
+						}).success(function(serverData) {
+							$scope.successMessage = 'Statusul utilizatorului a fost modificat';
+							$scope.user = serverData;
+						}).error(function(serverData) {
+							$scope.errorMessage = serverData.message;
+							$scope.successMessage = null;
+						});
+					};
 
 				});

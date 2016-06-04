@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 public class Constants {
 	
 	public enum AccountStatus{
-		REQESTED,ONLINE
+		REQESTED,ONLINE,BLOCKED
 	}
 	
 	public enum Sex{

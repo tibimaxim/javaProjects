@@ -15,6 +15,7 @@ import ro.tibi.csv.dto.AccountCreationDTO;
 import ro.tibi.csv.repository.Account;
 import ro.tibi.csv.repository.Role;
 import ro.tibi.csv.service.AccountService;
+import ro.tibi.csv.util.Constants.AccountStatus;
 
 @RestController
 @RequestMapping(value = "/account", produces = "application/json")
@@ -48,11 +49,25 @@ public class AccountController {
 		accountService.changePassword(password);
 	}
 	
-	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@Secured({"ROLE_ADMIN" })
 	@RequestMapping(value = "/changePasswordForUser", method = RequestMethod.POST)
 	public void changePasswordForUser(@RequestParam(required = true) String password, @RequestParam(required = true) Integer id) throws NotFoundException {
 		accountService.changePasswordForUser(password,id);
 	}
+	
+	@Secured({ "ROLE_ADMIN" })
+	@RequestMapping(value = "/blockUnblockAccount", method = RequestMethod.POST)
+	public Account blockUnblockAccount(@RequestParam(required = true) Integer id) throws NotFoundException {
+		Account account = accountService.getAccount(id);
+		if (AccountStatus.ONLINE.equals(account.getStatus())) {
+			account.setStatus(AccountStatus.BLOCKED);
+		} else {
+			account.setStatus(AccountStatus.ONLINE);
+		} 
+		
+		return accountService.updateAccount(account);
+	}
+	
 	
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = "/updateRoles", method = RequestMethod.POST)
@@ -69,7 +84,7 @@ public class AccountController {
 		return accountService.getAccounts();
 	}
 
-//	@Secured({ "ROLE_ADMIN" })
+	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = "/saveAccount", method = RequestMethod.POST, consumes = "application/json")
 	public Account saveAccount(@RequestBody AccountCreationDTO accountCreationDTO) {
 		return accountService.createAccount(accountCreationDTO);

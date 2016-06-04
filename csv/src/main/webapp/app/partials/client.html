@@ -26,11 +26,14 @@
 						<p>Poza trebuie sa fie crop pe zona de OCR de pe CI in format
 							jpg.</p>
 						<hr />
-						<a class="cursor orangeHover" ng-click="saveFromFile()">Salveaza
+						<a class="button cursor orangeHover" ng-click="saveFromFile()">Salveaza
 							Client</a> <br />
 						<hr />
-						<a class="cursor orangeHover" ng-click="toggleShowUploadForm()">Inapoi
+						<a class="button cursor orangeHover" ng-click="toggleShowUploadForm()">Inapoi
 							la introducere manuala</a> <br />
+						<br />
+						<hr ng-if="errorMessage !== null" />
+						<div class="error" ng-if="errorMessage !== null">A aparut o eroare.</div>
 					</div>
 				</div>
 				<div ng-show="showUploadForm !== true">

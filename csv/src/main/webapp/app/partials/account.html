@@ -8,6 +8,7 @@
 						<span class="light">Utilizator: </span> <span class="medium">{{user.username}}
 						</span>
 					</h1>
+					
 					<br />
 					<div class="myaccount-heading">
 						<span class="light">Date </span> <span class="medium">cont:</span>
@@ -68,6 +69,14 @@
 					<br /> <a class="button cursor orangeHover" ng-click="changePassword()">
 						Modifica </a>
 					<hr />
+					<div ng-show="isAdmin === true"> 
+					<br /> <a ng-if="user.status === 'ONLINE'" class="button cursor orangeHover" ng-click="blockUnblockAccount()">
+						Blocheaza utilizator </a>
+						<a ng-if="user.status !== 'ONLINE'"class="button cursor orangeHover" ng-click="blockUnblockAccount()">
+						Activeaza utilizator </a>
+					<hr />
+					</div>
+					
 					<div class="errorMessage" ng-if="errorMessage !== null">{{errorMessage}}</div>
 
 					<div class="successMessage" ng-if="successMessage !== null">

@@ -102,21 +102,6 @@ public class OcrServiceImpl implements OcrService,InitializingBean {
 				securityCodeWithoutDoB.substring(0, 1) + dateOfBirthString + securityCodeWithoutDoB.substring(1)));
 
 	}
-	
-	
-	//replaced AspriseOCR with tess4j
-	/*private String extractOcrDataWithAprise(byte[] ocrArea) throws IOException {
-		InputStream inputStream = new ByteArrayInputStream(ocrArea);
-		BufferedImage ocrAreaBufferedImage = ImageIO.read(inputStream);
-
-		Ocr.setUp();
-		Ocr ocr = new Ocr();
-		ocr.startEngine("eng", Ocr.SPEED_SLOW);
-		String ocrResult = ocr.recognize(ocrAreaBufferedImage, Ocr.RECOGNIZE_TYPE_TEXT, Ocr.OUTPUT_FORMAT_PLAINTEXT);
-		ocr.stopEngine();
-
-		return ocrResult;
-	}*/
 
 	private String extractOcrData(byte[] ocrArea) throws IOException, TesseractException {
 		InputStream inputStream = new ByteArrayInputStream(ocrArea);
