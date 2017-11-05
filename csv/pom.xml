@@ -53,17 +53,15 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>2.2.2</version>
 		</dependency>
+		<!-- <dependency> <groupId>net.sourceforge.jtds</groupId> <artifactId>jtds</artifactId> 
+			<version>1.3.1</version> </dependency> -->
 		<dependency>
-			<groupId>net.sourceforge.jtds</groupId>
-			<artifactId>jtds</artifactId>
-			<version>1.3.1</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.8-dmr</version>
 		</dependency>
-		<!-- replaced AspriseOCR with tess4j
-		<dependency>
-			<groupId>com.asprise.ocr</groupId>
-			<artifactId>java-ocr-api</artifactId>
-			<version>[15,)</version>
-		</dependency> -->
+		<!-- replaced AspriseOCR with tess4j <dependency> <groupId>com.asprise.ocr</groupId> 
+			<artifactId>java-ocr-api</artifactId> <version>[15,)</version> </dependency> -->
 		<dependency>
 			<groupId>net.sourceforge.tess4j</groupId>
 			<artifactId>tess4j</artifactId>
